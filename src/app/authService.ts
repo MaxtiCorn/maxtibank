@@ -7,15 +7,19 @@ import { AppConfig } from "./appConfig";
     providedIn: 'root',
 })
 export class AuthService {
-    private user: User;
+    private _user: User;
 
     constructor(private readonly httpService: HttpClient) { }
+
+    get user() {
+        return this._user;
+    }
 
     auth(login: string, password: string) {
         this.httpService.post(AppConfig.API_ENDPOINT + '/auth', { login: login, password: password })
             .subscribe((res) => {
                 if (res['success']) {
-                    this.user = new User(login);
+                    this._user = new User(login);
                 }
             });
     }

@@ -9,19 +9,36 @@ import { Operation } from '../operation';
   styleUrls: ['./pay-from-other-bank.component.css']
 })
 export class PayFromOtherBankComponent implements OnInit {
-  private card: Card;
-  private reciever: string;
-  private money: number;
+  private _card: Card;
+  private _reciever: string;
+  private _money: number;
+  private _comment: string;
 
   constructor(private operService: OperService, private changeDetectorRef: ChangeDetectorRef) { }
 
+  set card(value: Card) {
+    this._card = value;
+  }
+
+  set reciever(value: string) {
+    this._reciever = value;
+  }
+
+  set money(value: number) {
+    this._money = value;
+  }
+
+  set comment(value: string) {
+    this._comment = value;
+  }
+
   ngOnInit() {
-    this.card = new Card('', '', '');
+    this._card = new Card('', '', '');
     this.changeDetectorRef.detectChanges();
   }
 
   submit() {
-    this.operService.addOperation(new Operation(this.card.getNumber(), this.reciever, this.money));
+    this.operService.addOperation(new Operation(this._card.number, this._reciever, this._money));
   }
 
 }

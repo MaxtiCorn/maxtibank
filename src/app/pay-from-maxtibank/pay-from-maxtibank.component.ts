@@ -8,18 +8,30 @@ import { Operation } from '../operation';
   styleUrls: ['./pay-from-maxtibank.component.css']
 })
 export class PayFromMaxtibankComponent implements OnInit {
-  private reciever: string;
-  private money: number;
-  private comment: string;
+  private _reciever: string;
+  private _money: number;
+  private _comment: string;
 
   constructor(private operService: OperService, private changeDetectorRef: ChangeDetectorRef) { }
+
+  set reciever(value: string) {
+    this._reciever = value;
+  }
+
+  set money(value: number) {
+    this._money = value;
+  }
+
+  set comment(value: string) {
+    this._comment = value;
+  }
 
   ngOnInit() {
     this.changeDetectorRef.detectChanges();
   }
 
   submit() {
-    this.operService.addOperation(new Operation('maxtibank', this.reciever, this.money))
+    this.operService.addOperation(new Operation('maxtibank', this._reciever, this._money))
   }
 
 }

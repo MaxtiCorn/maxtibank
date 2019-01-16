@@ -7,7 +7,15 @@ import { Card } from '../card';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-  @Input() private card: Card;
+  private _card: Card;
+
+  get card() {
+    return this._card;
+  }
+
+  @Input() set card(value: Card) {
+    this._card = value;
+  }
 
   constructor() { }
 

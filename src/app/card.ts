@@ -1,7 +1,27 @@
 export class Card {
-    constructor(private number: string, private date: string, private cvc: string) { }
+    constructor(private _number: string, private _date: string, private _cvc: string) { }
 
-    getNumber() {
-        return this.number;
+    get number() {
+        return this._number;
+    }
+
+    set number(value: string) {
+        this._number = value;
+    }
+
+    get date() {
+        return this._date;
+    }
+
+    set date(value: string) {
+        this._date = value;
+    }
+
+    get cvc() {
+        return this._cvc;
+    }
+
+    set cvc(value: string) {
+        this._cvc = value;
     }
 }

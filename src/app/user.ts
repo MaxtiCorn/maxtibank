@@ -1,3 +1,7 @@
 export class User {
-    constructor(private name: string) { }
+    constructor(private _name: string) { }
+
+    get name() {
+        return this._name;
+    }
 }

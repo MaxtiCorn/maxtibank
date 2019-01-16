@@ -8,18 +8,42 @@ import { Operation } from '../operation';
   styleUrls: ['./request-for-payment.component.css']
 })
 export class RequestForPaymentComponent implements OnInit {
-  private sender: string;
-  private money: number;
-  private comment: string;
+  private _sender: string;
+  private _money: number;
+  private _comment: string;
 
-  constructor(private operService: OperService, private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private _operService: OperService, private _changeDetectorRef: ChangeDetectorRef) { }
+
+  get sender() {
+    return this._sender;
+  }
+
+  set sender(value: string) {
+    this._sender = value;
+  } 
+
+  get money() {
+    return this._money;
+  }
+
+  set money(value: number) {
+    this._money = value;
+  } 
+
+  get comment() {
+    return this._comment;
+  }
+
+  set comment(value: string) {
+    this._comment = value;
+  }
 
   ngOnInit() {
-    this.changeDetectorRef.detectChanges();
+    this._changeDetectorRef.detectChanges();
   }
 
   submit() {
-    this.operService.addOperation(new Operation(this.sender, 'maxtibank', this.money))
+    this._operService.addOperation(new Operation(this._sender, 'maxtibank', this._money))
   }
 
 }

@@ -9,5 +9,9 @@ import { AuthService } from './authService';
 export class AppComponent {
   currentPageTitle = 'maxtibank';
 
-  constructor(private authService: AuthService) { }
+  constructor(private _authService: AuthService) { }
+
+  get authService() {
+    return this._authService;
+  }
 }
