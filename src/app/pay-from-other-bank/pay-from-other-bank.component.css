@@ -1,0 +1,25 @@
+.pay-form
+{
+    margin: 20px auto;
+    width: 500px;
+    display: flex;
+}
+
+.pay-card
+{ 
+    width: 300px;
+}
+
+.pay-extra
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 200px;
+    padding: 10px;
+}
+
+.pay-extra input
+{
+    margin: 5px 0;
+}

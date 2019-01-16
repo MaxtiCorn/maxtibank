@@ -1,0 +1,11 @@
+<header>
+    <h1>{{ currentPageTitle }}</h1>
+</header>
+<main>
+    <app-auth *ngIf='!authService.user'></app-auth>
+    <div *ngIf='authService.user'>
+        <h4>Добро пожаловать, {{ authService.user.name }}</h4>
+        <app-payments></app-payments>
+    </div>
+</main>
+<footer></footer>

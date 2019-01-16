@@ -1,0 +1,5 @@
+<form name='login-form'>
+  <input class='form-control' placeholder='login' name='login' [(ngModel)]='login' #loginInput='ngModel' required [ngClass]="{'is-invalid': loginInput.invalid, 'is-valid': loginInput.valid}">
+  <input class='form-control' placeholder='password' name='password' [(ngModel)]='password' #passwordInput='ngModel' required [ngClass]="{'is-invalid': passwordInput.invalid, 'is-valid': passwordInput.valid}">
+  <input class='btn btn-primary submit-button' type='button' value='войти' (click)='auth()' [disabled]='loginInput.invalid || passwordInput.invalid'>
+</form>

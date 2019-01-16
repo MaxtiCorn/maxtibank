@@ -1,0 +1,8 @@
+<div class='pay-extra form-group'>
+  <input placeholder='Откуда' class='form-control' [(ngModel)]='sender' #senderInput='ngModel' required [ngClass]="{'is-invalid': senderInput.invalid, 'is-valid': senderInput.valid}"
+    pattern='\d{4} ?\d{4} ?\d{4} ?\d{4}'>
+  <input placeholder='Сумма' class='form-control' [(ngModel)]='money' #moneyInput='ngModel' required [ngClass]="{'is-invalid': moneyInput.invalid, 'is-valid': moneyInput.valid}"
+    pattern='\d+'>
+  <input placeholder='Комментарий' class='form-control' [(ngModel)]='comment' #commentInput='ngModel' [ngClass]="{'is-invalid': commentInput.invalid, 'is-valid': commentInput.valid}">
+  <input type='button' value='Запросить' class='btn btn-outline-primary' (click)='submit()' [disabled]='senderInput.invalid || moneyInput.invalid || commentInput.invalid'>
+</div>

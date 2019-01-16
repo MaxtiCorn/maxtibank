@@ -1,0 +1,47 @@
+.card
+{
+    min-width: 200px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    align-items: center;
+    justify-items: start;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, .2), 0 2px 6px 0 rgba(0, 0, 0, .2);
+}
+
+input
+{
+    margin: 10px;
+    padding: 5px;
+    width: 60%;
+}
+
+#card-number
+{
+    grid-row: 2;
+    grid-column: span 4;
+}
+
+#date, #cvc
+{
+    grid-row: 3;
+    grid-column: span 2;
+}
+
+img
+{
+    grid-row: 1;
+    justify-self: center;
+    width: 50%;
+}
+
+#visa-logo
+{
+    grid-column: 3;
+}
+
+#mc-logo
+{
+    grid-column: 4;
+}
