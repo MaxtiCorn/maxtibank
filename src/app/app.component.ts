@@ -7,7 +7,7 @@ import { AuthService } from './authService';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  currentPageTitle = 'maxtibank';
+  currentPageTitle = 'maxticash';
 
   constructor(private _authService: AuthService) { }
 

@@ -1,3 +1,3 @@
 export class AppConfig {
-    public static API_ENDPOINT='https://maxtibank-api.herokuapp.com';
+    public static API_ENDPOINT='https://maxticash-api.herokuapp.com';
  }

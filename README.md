@@ -1,6 +1,6 @@
-# Maxtibank
+# maxticash
 
-<https://maxtibank.herokuapp.com/>
+<https://maxticash.herokuapp.com/>
 
 ## Development server
 

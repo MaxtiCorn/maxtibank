@@ -6,14 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { CardComponent } from './card/card.component';
-import { PayFromMaxtibankComponent } from './pay-from-maxtibank/pay-from-maxtibank.component';
+import { PayFromMaxticashComponent } from './pay-from-maxticash/pay-from-maxticash.component';
 import { PayFromOtherBankComponent } from './pay-from-other-bank/pay-from-other-bank.component';
 import { RequestForPaymentComponent } from './request-for-payment/request-for-payment.component';
 import { AuthComponent } from './auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
-  { path: 'payFromMaxtibank', component: PayFromMaxtibankComponent },
+  { path: 'payFromMaxticash', component: PayFromMaxticashComponent },
   { path: 'payFromOtherBank', component: PayFromOtherBankComponent },
   { path: 'requestForPayment', component: RequestForPaymentComponent }
 ];
@@ -23,7 +23,7 @@ const appRoutes: Routes = [
     AppComponent,
     PaymentsComponent,
     CardComponent,
-    PayFromMaxtibankComponent,
+    PayFromMaxticashComponent,
     PayFromOtherBankComponent,
     RequestForPaymentComponent,
     AuthComponent

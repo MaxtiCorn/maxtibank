@@ -43,7 +43,7 @@ export class RequestForPaymentComponent implements OnInit {
   }
 
   submit() {
-    this._operService.addOperation(new Operation(this._sender, 'maxtibank', this._money))
+    this._operService.addOperation(new Operation(this._sender, 'maxticash', this._money))
   }
 
 }

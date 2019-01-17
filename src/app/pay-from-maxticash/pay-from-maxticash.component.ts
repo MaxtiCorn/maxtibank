@@ -3,11 +3,11 @@ import { OperService } from '../operService';
 import { Operation } from '../operation';
 
 @Component({
-  selector: 'app-pay-from-maxtibank',
-  templateUrl: './pay-from-maxtibank.component.html',
-  styleUrls: ['./pay-from-maxtibank.component.css']
+  selector: 'app-pay-from-maxticash',
+  templateUrl: './pay-from-maxticash.component.html',
+  styleUrls: ['./pay-from-maxticash.component.css']
 })
-export class PayFromMaxtibankComponent implements OnInit {
+export class PayFromMaxticashComponent implements OnInit {
   private _reciever: string;
   private _money: number;
   private _comment: string;
@@ -31,7 +31,7 @@ export class PayFromMaxtibankComponent implements OnInit {
   }
 
   submit() {
-    this.operService.addOperation(new Operation('maxtibank', this._reciever, this._money))
+    this.operService.addOperation(new Operation('maxticash', this._reciever, this._money))
   }
 
 }
