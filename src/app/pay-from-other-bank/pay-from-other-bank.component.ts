@@ -16,6 +16,10 @@ export class PayFromOtherBankComponent implements OnInit {
 
   constructor(private operService: OperService, private changeDetectorRef: ChangeDetectorRef) { }
 
+  get card() {
+    return this._card;
+  }
+
   set card(value: Card) {
     this._card = value;
   }
