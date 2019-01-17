@@ -1,14 +1,21 @@
-form {
+form
+{
     display: flex;
     flex-direction: column;
     width: 30%;
+    min-width: 120px;
+    max-width: 300px;
     margin: auto;
 }
 
-input {
+input
+{
     margin: 10px 0;
+    min-width: inherit;
+    max-width: inherit;
 }
 
-.submit-button {
+.submit-button
+{
     width: 20%;
 }
