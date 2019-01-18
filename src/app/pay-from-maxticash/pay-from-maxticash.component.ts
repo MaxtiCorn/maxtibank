@@ -1,6 +1,9 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OperService } from '../operService';
-import { Operation } from '../operation';
+import { UserService } from '../userService';
+import { AccService } from '../accService';
+import { Account } from '../account';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-pay-from-maxticash',
@@ -8,30 +11,56 @@ import { Operation } from '../operation';
   styleUrls: ['./pay-from-maxticash.component.css']
 })
 export class PayFromMaxticashComponent implements OnInit {
-  private _reciever: string;
-  private _money: number;
-  private _comment: string;
+  private _accounts: Account[];
 
-  constructor(private operService: OperService, private changeDetectorRef: ChangeDetectorRef) { }
+  private _form: FormGroup;
 
-  set reciever(value: string) {
-    this._reciever = value;
+  constructor(
+    private _userService: UserService,
+    private _accService: AccService,
+    private _operService: OperService) { }
+
+  get accounts() {
+    return this._accounts;
   }
 
-  set money(value: number) {
-    this._money = value;
+  get form() {
+    return this._form;
   }
 
-  set comment(value: string) {
-    this._comment = value;
+  get accountInput() {
+    return this._form.get('account');
+  }
+
+  get cashInput() {
+    return this._form.get('cash');
+  }
+
+  get commentInput() {
+    return this._form.get('comment');
   }
 
   ngOnInit() {
-    this.changeDetectorRef.detectChanges();
+    this._form = new FormGroup({
+      account: new FormControl(null, [Validators.required]),
+      cash: new FormControl(null, [Validators.required, Validators.pattern(/\d+/)]),
+      comment: new FormControl(null, [Validators.required])
+    });
+
+    this._accService.getAccounts(this._userService.user)
+      .subscribe((accounts: []) => {
+        this._accounts = accounts.map(
+          (account: { id: number, name: string, cash: number }) =>
+            new Account(account.id, account.name, account.cash))
+      });
   }
 
   submit() {
-    this.operService.addOperation(new Operation('maxticash', this._reciever, this._money))
+    const accountId = this._form.get('account').value.id;
+    const cash = this._form.get('cash').value;
+    const comment = this._form.get('comment').value;
+
+    this._operService.addOperation(accountId, cash, comment);
   }
 
 }

@@ -1,9 +1,11 @@
-<form class='pay-extra form-group'>
-  <input placeholder='Куда' class='form-control' [(ngModel)]='reciever' name='reciever' #recieverInput='ngModel'
-    required [ngClass]="{'is-invalid': recieverInput.invalid, 'is-valid': recieverInput.valid}" pattern='\d{4} ?\d{4} ?\d{4} ?\d{4}'>
-  <input placeholder='Сумма' class='form-control' [(ngModel)]='money' name='money' #moneyInput='ngModel' required
-    [ngClass]="{'is-invalid': moneyInput.invalid, 'is-valid': moneyInput.valid}" pattern='\d+'>
-  <input placeholder='Комментарий' class='form-control' [(ngModel)]='comment' name='comment' #commentInput='ngModel'
-    [ngClass]="{'is-invalid': commentInput.invalid, 'is-valid': commentInput.valid}">
-  <input type='button' value='Заплатить' class='btn btn-outline-primary' (click)='submit()' [disabled]='recieverInput.invalid || moneyInput.invalid || commentInput.invalid'>
+<form id='pay-from-maxticash-form' class='pay-extra form-group' [formGroup]='form'>
+  <select id='account' class='form-control' formControlName='account' name='account' [ngClass]="{'is-invalid': accountInput.invalid, 'is-valid': accountInput.valid}">
+    <option *ngFor='let account of accounts' [ngValue]='account'>
+      {{ account.name }}: {{ account.cash }}
+    </option>
+  </select>
+  <input id='cash' class='form-control' formControlName='cash' name='cash' placeholder='Сумма' [ngClass]="{'is-invalid': cashInput.invalid, 'is-valid': cashInput.valid}">
+  <input id='comment' class='form-control' formControlName='comment' name='comment' placeholder='Комментарий' [ngClass]="{'is-invalid': commentInput.invalid, 'is-valid': commentInput.valid}">
+  <input id='submitButton' class='btn btn-outline-primary' type='button' value='Заплатить' (click)='submit()'
+    [disabled]='accountInput.invalid || cashInput.invalid || commentInput.invalid'>
 </form>

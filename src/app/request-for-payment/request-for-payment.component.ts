@@ -1,6 +1,5 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { OperService } from '../operService';
-import { Operation } from '../operation';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-request-for-payment',
@@ -8,42 +7,33 @@ import { Operation } from '../operation';
   styleUrls: ['./request-for-payment.component.css']
 })
 export class RequestForPaymentComponent implements OnInit {
-  private _sender: string;
-  private _money: number;
-  private _comment: string;
+  private _form: FormGroup;
 
-  constructor(private _operService: OperService, private _changeDetectorRef: ChangeDetectorRef) { }
+  constructor() { }
 
-  get sender() {
-    return this._sender;
+  get form() {
+    return this._form;
   }
 
-  set sender(value: string) {
-    this._sender = value;
-  } 
-
-  get money() {
-    return this._money;
+  get cashInput() {
+    return this._form.get('cash');
   }
 
-  set money(value: number) {
-    this._money = value;
-  } 
-
-  get comment() {
-    return this._comment;
-  }
-
-  set comment(value: string) {
-    this._comment = value;
+  get commentInput() {
+    return this._form.get('comment');
   }
 
   ngOnInit() {
-    this._changeDetectorRef.detectChanges();
+    this._form = new FormGroup({
+      cash: new FormControl(null, [Validators.required, Validators.pattern(/\d+/)]),
+      comment: new FormControl(null, [Validators.required])
+    });
   }
 
   submit() {
-    this._operService.addOperation(new Operation(this._sender, 'maxticash', this._money))
+    const cash = this._form.get('cash').value;
+    const comment = this._form.get('comment').value;
+    console.log(cash, comment);
   }
 
 }

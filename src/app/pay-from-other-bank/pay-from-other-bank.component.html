@@ -1,15 +1,10 @@
 <div class='pay-form'>
   <div class='pay-card'>
-    <app-card [card]='card'></app-card>
+    <app-card [form]='cardForm'></app-card>
   </div>
-  <div class='pay-extra form-group'>
-    <input placeholder='Куда' class='form-control form-control-sm' [(ngModel)]='reciever' name='reciever'
-      #recieverInput='ngModel' required [ngClass]="{'is-invalid': recieverInput.invalid, 'is-valid': recieverInput.valid}"
-      pattern='\d{4} ?\d{4} ?\d{4} ?\d{4}'>
-    <input placeholder='Сумма' class='form-control form-control-sm' [(ngModel)]='money' name='money' #moneyInput='ngModel'
-      required [ngClass]="{'is-invalid': moneyInput.invalid, 'is-valid': moneyInput.valid}" pattern='\d+'>
-    <input placeholder='Комментарий' class='form-control form-control-sm' [(ngModel)]='comment' name='comment'
-      #commentInput='ngModel' [ngClass]="{'is-invalid': commentInput.invalid, 'is-valid': commentInput.valid}">
-    <input type='button' value='Заплатить' class='btn btn-outline-primary' (click)='submit()' [disabled]='recieverInput.invalid || moneyInput.invalid || commentInput.invalid'>
-  </div>
+  <form class='pay-extra form-group' [formGroup]='form'>
+    <input placeholder='Сумма' class='form-control form-control-sm' formControlName='cash' name='cash' [ngClass]="{'is-invalid': cashInput.invalid, 'is-valid': cashInput.valid}">
+    <input placeholder='Комментарий' class='form-control form-control-sm' formControlName='comment' name='comment' [ngClass]="{'is-invalid': commentInput.invalid, 'is-valid': commentInput.valid}">
+    <input type='button' value='Заплатить' class='btn btn-outline-primary' (click)='submit()' [disabled]='cardForm.invalid || cashInput.invalid || commentInput.invalid'>
+  </form>
 </div>

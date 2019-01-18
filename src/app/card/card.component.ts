@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Card } from '../card';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-card',
@@ -7,14 +7,26 @@ import { Card } from '../card';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-  private _card: Card;
+  private _form: FormGroup;
 
-  get card() {
-    return this._card;
+  @Input() set form(value: FormGroup) {
+    this._form = value;
   }
 
-  @Input() set card(value: Card) {
-    this._card = value;
+  get form() {
+    return this._form;
+  }
+
+  get cardNumberInput() {
+    return this._form.get('cardNumber');
+  }
+
+  get dateInput() {
+    return this._form.get('date');
+  }
+
+  get cvcInput() {
+    return this._form.get('cvc');
   }
 
   constructor() { }
