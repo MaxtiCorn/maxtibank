@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../authService';
+import { UserService } from '../userService';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-auth',
@@ -7,24 +8,32 @@ import { AuthService } from '../authService';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  private _login: string;
-  private _password: string;
+  private _form: FormGroup;
 
-  constructor(private authService: AuthService) { }
+  constructor(private _userService: UserService) { }
 
-  set login(value: string) {
-    this._login = value;
+  get form() {
+    return this._form;
   }
 
-  set password(value: string) {
-    this._password = value;
+  get loginInput() {
+    return this._form.get('login');
+  }
+
+  get passwordInput() {
+    return this._form.get('password');
   }
 
   ngOnInit() {
+    this._form = new FormGroup({
+      login: new FormControl(null, [Validators.required]),
+      password: new FormControl(null, [Validators.required])
+    });
   }
 
   auth() {
-    this.authService.auth(this._login, this._password);
+    const login = this._form.get('login').value;
+    const password = this._form.get('password').value;
+    this._userService.auth(login, password);
   }
-
 }

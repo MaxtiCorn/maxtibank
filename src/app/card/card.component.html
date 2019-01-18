@@ -1,10 +1,7 @@
-<div class='card'>
+<form class='card' [formGroup]='form'>
   <img src='assets\visa_logo.png' id='visa-logo'>
   <img src='assets\mastercard_logo.png' id='mc-logo'>
-  <input placeholder='Номер карты' id='card-number' class='form-control' [(ngModel)]='card.number' #cardNumberInput='ngModel'
-    required [ngClass]="{'is-invalid': cardNumberInput.invalid, 'is-valid': cardNumberInput.valid}" pattern='\d{4} ?\d{4} ?\d{4} ?\d{4}'>
-  <input placeholder='ММ/ГГ' id='date' class='form-control' [(ngModel)]='card.date' #cardDateInput='ngModel' required
-    [ngClass]="{'is-invalid': cardDateInput.invalid, 'is-valid': cardDateInput.valid}" pattern='([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))'>
-  <input placeholder='CVC' id='cvc' class='form-control' [(ngModel)]='card.cvc' #cardCVCInput='ngModel' required
-    [ngClass]="{'is-invalid': cardCVCInput.invalid, 'is-valid': cardCVCInput.valid}" pattern='\d{3}'>
-</div>
+  <input id='card-number' class='form-control' formControlName='cardNumber' placeholder='Номер карты' [ngClass]="{'is-invalid': cardNumberInput.invalid, 'is-valid': cardNumberInput.valid}">
+  <input id='date' class='form-control' formControlName='date' placeholder='ММ/ГГ' [ngClass]="{'is-invalid': dateInput.invalid, 'is-valid': dateInput.valid}">
+  <input id='cvc' class='form-control' formControlName='cvc' placeholder='CVC' [ngClass]="{'is-invalid': cvcInput.invalid, 'is-valid': cvcInput.valid}">
+</form>

@@ -1,7 +1,5 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Card } from '../card';
-import { OperService } from '../operService';
-import { Operation } from '../operation';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-pay-from-other-bank',
@@ -9,40 +7,47 @@ import { Operation } from '../operation';
   styleUrls: ['./pay-from-other-bank.component.css']
 })
 export class PayFromOtherBankComponent implements OnInit {
-  private _card: Card;
-  private _reciever: string;
-  private _money: number;
-  private _comment: string;
+  private _form: FormGroup;
+  private _cardForm: FormGroup;
 
-  constructor(private operService: OperService, private changeDetectorRef: ChangeDetectorRef) { }
+  constructor() { }
 
-  get card() {
-    return this._card;
+  get form() {
+    return this._form;
   }
 
-  set card(value: Card) {
-    this._card = value;
+  get cardForm() {
+    return this._cardForm;
   }
 
-  set reciever(value: string) {
-    this._reciever = value;
+  get cashInput() {
+    return this._form.get('cash');
   }
 
-  set money(value: number) {
-    this._money = value;
-  }
-
-  set comment(value: string) {
-    this._comment = value;
+  get commentInput() {
+    return this._form.get('comment');
   }
 
   ngOnInit() {
-    this._card = new Card('', '', '');
-    this.changeDetectorRef.detectChanges();
+    this._form = new FormGroup({
+      cash: new FormControl(null, [Validators.required, Validators.pattern(/\d+/)]),
+      comment: new FormControl(null, [Validators.required])
+    });
+
+    this._cardForm = new FormGroup({
+      cardNumber: new FormControl(null, [Validators.required, Validators.pattern(/\d{4} ?\d{4} ?\d{4} ?\d{4}/)]),
+      date: new FormControl(null, [Validators.required, Validators.pattern(/([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))/)]),
+      cvc: new FormControl(null, [Validators.required, Validators.pattern(/\d{3}/)])
+    });
   }
 
   submit() {
-    this.operService.addOperation(new Operation(this._card.number, this._reciever, this._money));
+    const cardNumber = this._cardForm.get('cardNumber').value;
+    const date = this._cardForm.get('date').value;
+    const cvc = this._cardForm.get('cvc').value;
+    const cash = this._form.get('cash').value;
+    const comment = this._form.get('comment').value;
+    console.log({ cardNumber, date, cvc, cash, comment });
   }
 
 }

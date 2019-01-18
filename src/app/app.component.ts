@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from './authService';
+import { UserService } from './userService';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +9,9 @@ import { AuthService } from './authService';
 export class AppComponent {
   currentPageTitle = 'maxticash';
 
-  constructor(private _authService: AuthService) { }
+  constructor(private _userService: UserService) { }
 
-  get authService() {
-    return this._authService;
+  get userService() {
+    return this._userService;
   }
 }
