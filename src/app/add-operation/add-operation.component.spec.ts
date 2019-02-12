@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PayFromMaxticashComponent } from './pay-from-maxticash.component';
+import { AddOperationComponent } from './add-operation.component';
 
 describe('PayFromMaxticashComponent', () => {
-  let component: PayFromMaxticashComponent;
-  let fixture: ComponentFixture<PayFromMaxticashComponent>;
+  let component: AddOperationComponent;
+  let fixture: ComponentFixture<AddOperationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PayFromMaxticashComponent ]
+      declarations: [ AddOperationComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PayFromMaxticashComponent);
+    fixture = TestBed.createComponent(AddOperationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

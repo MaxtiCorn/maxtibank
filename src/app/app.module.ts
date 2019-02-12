@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { CardComponent } from './card/card.component';
-import { PayFromMaxticashComponent } from './pay-from-maxticash/pay-from-maxticash.component';
+import { AddOperationComponent } from './add-operation/add-operation.component';
 import { PayFromOtherBankComponent } from './pay-from-other-bank/pay-from-other-bank.component';
 import { RequestForPaymentComponent } from './request-for-payment/request-for-payment.component';
 import { AuthComponent } from './auth/auth.component';
@@ -18,7 +18,7 @@ import { OperationsComponent } from './operations/operations.component';
     AppComponent,
     PaymentsComponent,
     CardComponent,
-    PayFromMaxticashComponent,
+    AddOperationComponent,
     PayFromOtherBankComponent,
     RequestForPaymentComponent,
     AuthComponent,

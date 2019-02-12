@@ -6,11 +6,11 @@ import { Account } from '../account';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-pay-from-maxticash',
-  templateUrl: './pay-from-maxticash.component.html',
-  styleUrls: ['./pay-from-maxticash.component.css']
+  selector: 'app-add-operation',
+  templateUrl: './add-operation.component.html',
+  styleUrls: ['./add-operation.component.css']
 })
-export class PayFromMaxticashComponent implements OnInit {
+export class AddOperationComponent implements OnInit {
   private _accounts: Account[];
 
   private _form: FormGroup;
