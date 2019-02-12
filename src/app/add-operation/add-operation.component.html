@@ -6,6 +6,6 @@
   </select>
   <input id='cash' class='form-control' formControlName='cash' name='cash' placeholder='Сумма' [ngClass]="{'is-invalid': cashInput.invalid, 'is-valid': cashInput.valid}">
   <input id='comment' class='form-control' formControlName='comment' name='comment' placeholder='Комментарий' [ngClass]="{'is-invalid': commentInput.invalid, 'is-valid': commentInput.valid}">
-  <input id='submitButton' class='btn btn-outline-primary' type='button' value='Заплатить' (click)='submit()'
+  <input id='submitButton' class='btn btn-outline-primary' type='button' value='Добавить' (click)='submit()'
     [disabled]='accountInput.invalid || cashInput.invalid || commentInput.invalid'>
 </form>
