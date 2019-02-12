@@ -19,12 +19,12 @@ export class OperService {
     getUserOperations(user: User) {
         const params = new HttpParams()
             .set('userId', user.id.toString());
-        this._httpService.get(AppConfig.API_ENDPOINT + '/getOperations', { params })
+        return this._httpService.get(AppConfig.API_ENDPOINT + '/getOperations', { params });
     }
 
     getAccountOperations(account: Account) {
         const params = new HttpParams()
             .set('accountId', account.id.toString());
-        return this._httpService.get(AppConfig.API_ENDPOINT + '/getOperations', { params })
+        return this._httpService.get(AppConfig.API_ENDPOINT + '/getOperations', { params });
     }
 }

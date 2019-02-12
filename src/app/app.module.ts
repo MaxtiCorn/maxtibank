@@ -11,12 +11,7 @@ import { PayFromOtherBankComponent } from './pay-from-other-bank/pay-from-other-
 import { RequestForPaymentComponent } from './request-for-payment/request-for-payment.component';
 import { AuthComponent } from './auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
-
-const appRoutes: Routes = [
-  { path: 'payFromMaxticash', component: PayFromMaxticashComponent },
-  { path: 'payFromOtherBank', component: PayFromOtherBankComponent },
-  { path: 'requestForPayment', component: RequestForPaymentComponent }
-];
+import { OperationsComponent } from './operations/operations.component';
 
 @NgModule({
   declarations: [
@@ -26,15 +21,15 @@ const appRoutes: Routes = [
     PayFromMaxticashComponent,
     PayFromOtherBankComponent,
     RequestForPaymentComponent,
-    AuthComponent
+    AuthComponent,
+    OperationsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
