@@ -1,6 +1,6 @@
-<div class="list-group list-group-flush">
-  <article class="list-group-item" *ngFor='let operation of operations'>
-    <p>{{operation.cash}}</p>
-    <p>{{operation.comment}}</p>
+<div class="operations-list list-group">
+  <article class="list-group-item list-group-item-action" *ngFor='let operation of operations'>
+    <p [ngClass]="{'cash_plus': operation.cash > 0, 'cash_minus': operation.cash < 0}">{{operation.cash}}</p>
+    <p class="comment">{{operation.comment}}</p>
   </article>
 </div>

@@ -2,3 +2,26 @@ p
 {
     margin: 0;
 }
+
+.operations-list
+{
+    width: 80%;
+    min-width: 500px;
+    margin: 36px auto;
+}
+
+.cash_plus
+{
+    color: #069922;
+}
+
+.cash_minus
+{
+    color: #d04d4d;
+}
+
+.comment
+{
+    font-size: .9em;
+    color: gray;
+}
